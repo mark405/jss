@@ -198,3 +198,37 @@ logger();
 //стрелочная функция
 
 const calcu = (a, b) => { return a + b; };
+
+
+// методы строк и чисел
+
+const str = 'text';
+const arr = [1, 2, 3];
+
+console.log(str.length);  // кол-во символов
+console.log(arr.length);  // кол-во обьектов в массиве
+console.log(str[2]);  // индекс
+console.log(str.toUpperCase()); // сделать все буквы большими
+console.log(str.toLowerCase()); // сделать все буквы маленькими
+
+const fruit = 'Some fruit';
+
+console.log(fruit.indexOf('fruit')); // индекс начала слова
+console.log(fruit.indexOf('q'));
+
+const logg = 'Hello world';
+
+console.log(logg.slice(6)); // console.log(logg.slice(6, 11))
+
+console.log(logg.substring(6)); // аналогично только с положительными значениями
+
+console.log(logg.substr(6, 5)); // начиная с индеса + сколько символов
+
+
+const numberous = 12.2;
+console.log(Math.round(numberous)); //  округление
+
+const texterous = '12.2px';
+console.log(parseInt(texterous)); //  переводит в другую сисмтему исчесления с округлением
+console.log(parseFloat(texterous)); // переводит в другую систему исчесления без округления
+
