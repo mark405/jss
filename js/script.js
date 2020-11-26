@@ -232,3 +232,228 @@ const texterous = '12.2px';
 console.log(parseInt(texterous)); //  переводит в другую сисмтему исчесления с округлением
 console.log(parseFloat(texterous)); // переводит в другую систему исчесления без округления
 
+
+// callback функции
+
+
+function something () {
+    setTimeout(function() {
+        console.log(1);      // задержка в 500 мс
+    }, 500);
+}
+
+function second() {
+    console.log(2);
+}
+
+something();
+second();
+
+
+function learnJS(lang, callback) {
+    console.log(`Я учу ${lang}`);
+    callback();
+}
+
+function done() {                       // callbakc функция
+    console.log('Я прошел этот урок');
+}
+
+learnJS('JavaScript', done);
+
+// Методы обьектов
+
+const options = {
+    name: 'text',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: 'black',
+        bg: 'red'
+    },
+    makeTest: function() {
+        console.log('Test');
+    }
+};
+
+options.makeTest();
+
+const {border, bg} = options.colors;  // деструктуризация обьекта
+console.log(border, bg);
+
+console.log(Object.keys(options));
+console.log(Object.keys(options).length);
+
+// console.log(options['colors']['border']);
+
+// delete options.name; // delete
+
+// console.log(options);
+
+// let counter = 0;
+
+// for (let key in options) {
+//     if (typeof(options[key]) === 'object') {
+//         for (let i in options[key]) {
+//             console.log(`Свойство ${i} имеет значения ${options[key][i]}`);
+//             counter++;
+//         }
+//     } else {
+//        console.log(`Свойство ${key} имеет значение ${options[key]}`); // Ввести значение каждого ключа
+//         counter++;
+//     }
+// }
+// console.log(`Количество обьектов ${counter}`);
+
+
+
+// Методы массивов
+
+const massive = [1, 2, 3, 6, 8];
+// massive[99] = 0;                   // Свойство length считает индекс последний элемент плюс один
+// console.log(massive.length);
+
+massive.forEach(function(item, i, massive) {   // три аргумента {
+                                                                // item: значение элемента массива,
+                                                                // i: индекс элемента массива,
+                                                                // massive: ссылка на данный массив}
+    console.log(`${item}: ${i} в нутри массива ${massive}`);
+});
+
+
+// massive.pop(); // удаляет последний элемент массива
+// massive.push(10); // добавляет элемент в конец
+
+// console.log(massive);
+
+for (let i = 0; i < massive.length; i++) {
+    console.log(massive[i]);
+}
+
+for (let value of massive) {   // работает только с массивами
+    console.log(value);
+}
+
+
+const stringer = prompt('', '');
+const products = stringer.split(', ');  // преобразует из строки массив, разделяя ее по запятой с пробелом
+products.sort();  //  сортиурет строки по алфавиту или числа в массиве по возрастанию
+console.log(products.join('; '));  // преобразует из массива строку,
+                                    //  разделяя элементы массива на точку с запятой с пробелом
+function compareNum(a, b) {
+    return a - b;
+}
+
+// псевдомассивы не имеют никаких методов и свойств
+
+
+// ппередача по ссілке ил по значению
+
+let a = 5,
+    b = a;
+
+b = b + 5;
+
+console.log(b);
+console.log(a);
+
+// const objective = {
+//     a: 5,
+//     b: 1
+// };
+
+// const copy = objective; //ссылка
+
+// copy.a = 10;
+
+// console.log(copy);
+// console.log(objective);
+
+function copy(mainObj) {
+    let objcopy = {};
+    
+    let key;
+    for (key in mainObj) {
+        objcopy[key] = mainObj[key];
+    }
+
+    return objcopy;
+}
+
+const numbers = {
+    a: 2,
+    b: 5,
+    c: {
+        x: 7,
+        y: 4
+    }
+};
+
+const newNumbers = copy(numbers);
+
+newNumbers.a = 10;
+
+console.log(newNumbers);
+console.log(numbers);
+
+const add = {
+    d: 17,
+    e: 20
+};
+
+const clone = Object.assign({}, add);
+
+clone.d = 20;
+
+console.log(add);
+console.log(clone);
+
+console.log(Object.assign(numbers, add));  // Object.assign соединяет два обьекта
+
+
+// копии массива
+
+const oldArray = ['a', 'b', 'c'];
+const newArray = oldArray.slice();
+
+newArray[1] = 'gfggggg';
+console.log(newArray);
+console.log(oldArray);
+
+
+//  оператор spread
+
+const video = ['youtube', 'vimeo', 'rutube'],
+      blogs = ['wordpress', 'livejournal', 'blogger'],
+      internet = [...video, ...blogs, 'vk', 'facebook'];  //  разлагает и соединяет два массива ил больше
+
+
+console.log(internet);
+
+
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+const numbering = [2, 5, 7];
+
+log(...numbering);  // разлагает элементы
+
+
+const arraying = ['a', 'b'];
+
+const newAarray = [...arraying];  //  разлагает и создает копию массива arraying
+
+const q = {
+    one: 1,
+    two: 2
+};
+
+const newObjection = {...q};  //  разлагает и создает копию обьекта q
+
+newObjection.one = 10;       
+
+console.log(newObjection);
+console.log(q);
